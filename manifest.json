@@ -1,0 +1,16 @@
+{
+    "manifest_version": 3,
+    "name": "my-fpl",
+    "version": "1.0",
+    "description": "A cleaner, faster FPL Draft UI on desktop.",
+    "permissions": ["storage", "scripting"],
+    "host_permissions": ["https://draft.premierleague.com/*", "https://fantasy.premierleague.com/*"],
+    "content_scripts": [
+    {
+      "matches": ["https://draft.premierleague.com/*"],
+      "js": ["dist/content.js"],
+      "run_at": "document_end",
+      "all_frames": true
+    }
+    ]
+}
