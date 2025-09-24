@@ -78,3 +78,18 @@ type Ctx = {
   loading: boolean;
   error?: string;
 };
+
+type CurrentGameWeekCtx = {
+  currentGameWeek: currentGameWeek | null;
+  loading: boolean;
+  error?: string;
+};
+
+export type currentGameWeek = {
+  current_event: number;
+  current_event_finished: boolean;
+  next_event: number;
+  processing_status: string;
+  trades_time_for_approval: string;
+  waivers_processed: string;
+}

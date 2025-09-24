@@ -1,9 +1,9 @@
 
 import React, { useEffect, useState} from "react";
 
-import type {Ctx, LeagueDetailsResponse} from '../../types';
+import type {Ctx, LeagueDetailsResponse} from '../../../types';
 import { fetchJSON, getLeagueIdWithRetry } from "@/helpers/leagueDataHelpers";
-import { LeagueDataContext } from "./LeagueDataContext";
+import { LeagueDataContext } from "../LeagueDataContext";
 
 
 

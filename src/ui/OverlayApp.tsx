@@ -1,8 +1,9 @@
 import { useEffect } from "react";
 import { MemoryRouter, Routes, Route, Outlet } from "react-router-dom";
-import { LeagueHome } from "./leagueHome";
+import { LeagueHome } from "./home/leagueHome";
 import { StandingsHome } from "./standingsHome";
-import { LeagueDataProvider } from "../context/LeagueDataProvider";
+import { LeagueDataProvider } from "../context/data_providers/LeagueDataProvider";
+import { CurrentGameWeekProvider } from "@/context/data_providers/CurrentGameWeekProvider";
 
 
 function Shell({ onClose }: { onClose: () => void }) {
@@ -34,6 +35,7 @@ export default function OverlayApp({ close }: { close: () => void }) {
   return (
     <MemoryRouter>
         <LeagueDataProvider>
+          <CurrentGameWeekProvider>
             <Routes>
                 <Route element={<Shell onClose={close} />}>
                 <Route index element={<LeagueHome/>} />
@@ -41,6 +43,7 @@ export default function OverlayApp({ close }: { close: () => void }) {
                 {/* <Route path="leaguehome" element={<LeagueHome />} /> */}
                 </Route>
             </Routes>
+            </CurrentGameWeekProvider>
       </LeagueDataProvider>
     </MemoryRouter>
   );

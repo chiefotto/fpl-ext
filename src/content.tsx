@@ -7,6 +7,7 @@ import OverlayApp from "./ui/OverlayApp";
 
 const host = document.createElement("div");
 host.id = "my-fpl-host";
+
 if (!document.getElementById(host.id)) {
   const shadow = host.attachShadow({ mode: "open" });
   document.documentElement.appendChild(host);
@@ -20,14 +21,17 @@ if (!document.getElementById(host.id)) {
     .panel { width: min(1000px, 92vw); height: min(680px, 90vh);
       background:#0f1115; color:#fff; border-radius:16px; box-shadow:0 30px 80px rgba(0,0,0,.45);
       overflow:hidden; display:flex; flex-direction:column; font-family:system-ui, sans-serif; }
-    .head { display:flex; align-items:center; justify-content:space-between;
+    .head { display:flex; align-items:center;;
       padding:12px 16px; border-bottom:1px solid rgba(255,255,255,.08); font-weight:600; }
     .body { flex:1; overflow:auto; padding:16px; }
     .close { appearance:none; border:0; background:transparent; color:#bbb; cursor:pointer;
       font-size:18px; padding:6px 8px; border-radius:8px; }
     .close:hover { background:rgba(255,255,255,.08); color:#fff; }
+    .table {width:100%;border-collapse:collapse;}
+    .tablebody {flex:1; flex-direction:column; overflow:auto;}
   `;
   shadow.appendChild(style);
+  
 
   const app = document.createElement("div");
   shadow.appendChild(app);
