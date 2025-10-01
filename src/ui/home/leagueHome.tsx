@@ -1,25 +1,10 @@
-// import {
-//   Table,
-//   TableBody,
-//   TableCaption,
-//   TableCell,
-//   TableFooter,
-//   TableHead,
-//   TableHeader,
-//   TableRow,
-// } from "../../components/ui/table";
-// import { useState } from "react";
-// import {Button} from "../components/ui/button";
-// import { StandingsHome } from "./standingsHome";
 import {Link} from 'react-router-dom';
 import { useLeagueData } from "@/hooks/useLeagueData";
 import { useCurrentGameWeek } from '@/hooks/useCurrentGameWeek';
 import { aggStandingNames } from "@/helpers/leagueDataHelpers";
 import {LeagueHomeTable} from "./leagueHomeTable";
 import { leagueHomeColumns, type LeagueHomeColumnsType } from "./leagueHomeColumns";
-
-
-// type LeagueHomeProps = {LeagueHomePropsFull:LeagueDetailsResponse|null};
+import {LeagueHomeHeader} from './leagueHomeHeader';
 
 
 export function LeagueHome( ) {
@@ -29,6 +14,7 @@ export function LeagueHome( ) {
   const leagueId = leagueData?.league.id;
   const currentGameWeek = currentGameWeekData?.currentGameWeek?.current_event
   const nextGameWeek = currentGameWeekData?.currentGameWeek?.next_event
+  const leagueName = leagueData?.league.name || 'No League Name';
 
 
  
@@ -72,49 +58,20 @@ console.log(leagueData, 'full league data');
 
 
   return (
+    <>
+    <LeagueHomeHeader leagueName={leagueName}></LeagueHomeHeader>
+    
     <div className="p-4 flex flex-col gap-4">
+      
 
       <h1>Match {currentGameWeek}/{total_matches} next game week: {nextGameWeek}</h1>
 
       <LeagueHomeTable columns={leagueHomeColumns} data={leagueHomeTableData}></LeagueHomeTable>
-
-  
-      
-      {/* <Table>
-        <TableCaption><h2 className="mb-4 text-2xl font-bold">{leagueData?.league.name}</h2></TableCaption>
-        <TableHeader>
-        
-          <TableRow>
-            <TableHead>Recent Form (W/D/L)</TableHead>
-            <TableHead>Rank Delta</TableHead>
-            <TableHead>Points Scored/Points Against</TableHead>
-            
-          </TableRow>
-        </TableHeader>
-        <TableBody>
-            {aggregatedStandingsData?.map((standing) => (
-          <TableRow key={standing.league_entry}>
-            <TableCell>({standing.rank}) {standing.entry_name}  {standing.matches_won}/{standing.matches_drawn}/{standing.matches_lost}</TableCell>
-            <TableCell>{standing.last_rank} to {standing.rank}</TableCell>
-            <TableCell>{standing.points_for}/{standing.points_against}</TableCell>
-          </TableRow>
-          ))}
-        </TableBody>
-        <TableFooter>
-          <TableRow>
-            <TableCell colSpan={5}>
-              Showing 1 leagues. Go to the FPL website to see more.
-            </TableCell>
-          </TableRow>
-        </TableFooter>
-      </Table> */}
       <div className='head'>
         <Link to={`standings/${leagueId}`}>STANDINGS</Link>
-        <>TEST</>
-        {/* <Button variant={'link'} onClick={()=>setShowStandings(prev=> !prev)}/> League Standings */}
       </div>
-      {/* <>{showStandings && show_league_standings()}</> */}
     </div>
+    </>
   );
 }
 

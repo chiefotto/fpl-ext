@@ -29,6 +29,8 @@ if (!document.getElementById(host.id)) {
     .close:hover { background:rgba(255,255,255,.08); color:#fff; }
     .table {width:100%;border-collapse:collapse;}
     .tablebody {flex:1; flex-direction:column; overflow:auto;}
+    .homePageHeader {border-radius:5px;  justify-content:space-between; align-items:center;
+      display:flex; padding:10px 20px; background:#0f1115; box-shadow:0 2px 4px rgba(0,0,0,.1);}
   `;
   shadow.appendChild(style);
   

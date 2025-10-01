@@ -2,6 +2,7 @@
 import type {ColumnDef} from "@tanstack/react-table";
 import { ArrowDownToLine } from 'lucide-react'
 import { ArrowUpFromLine } from 'lucide-react';
+import { Link } from "react-router-dom";
 
 export type LeagueHomeColumnsType = {
     rank: number;
@@ -56,6 +57,13 @@ export const leagueHomeColumns: ColumnDef<LeagueHomeColumnsType>[] = [
                 {Array(wins).fill('🏆').join('')}
                 {Array(draws).fill('🤝').join('')}
                 {Array(losses).fill('❌').join('')}
+                <div>
+                    <Link to={`standings/${70432}`}>
+                    <div>W: {wins}</div>
+                    <div>D: {draws}</div>
+                    <div>L: {losses}</div>
+                    </Link>
+                </div>
             </div>
         }
     },

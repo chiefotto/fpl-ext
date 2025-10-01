@@ -4,6 +4,7 @@ import { LeagueHome } from "./home/leagueHome";
 import { StandingsHome } from "./standingsHome";
 import { LeagueDataProvider } from "../context/data_providers/LeagueDataProvider";
 import { CurrentGameWeekProvider } from "@/context/data_providers/CurrentGameWeekProvider";
+import { UserTeamHome } from "./user_team/userTeamHome";
 
 
 function Shell({ onClose }: { onClose: () => void }) {
@@ -40,7 +41,7 @@ export default function OverlayApp({ close }: { close: () => void }) {
                 <Route element={<Shell onClose={close} />}>
                 <Route index element={<LeagueHome/>} />
                 <Route path="standings/:league_id" element={<StandingsHome/>} />
-                {/* <Route path="leaguehome" element={<LeagueHome />} /> */}
+                <Route path="user_team/:user_id/:event_id" element={<UserTeamHome />} />
                 </Route>
             </Routes>
             </CurrentGameWeekProvider>
